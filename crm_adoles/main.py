@@ -1,6 +1,6 @@
 import streamlit as st
 
-with st.form("Cadastro Adoles"):
+with st.form("Cadastro Adoles",clear_on_submit=True):
     
     foto = st.camera_input("Fotinha")
     nome = st.text_input("Nome")
@@ -11,4 +11,6 @@ with st.form("Cadastro Adoles"):
     submitted = st.form_submit_button("Cadastrar")
 
     if submitted:
+        st.toast("Adoles cadastrado!", icon=":material/check_circle:")
+        
         st.write("nome", nome, "email", email,"data_nasc", data_nasc)
