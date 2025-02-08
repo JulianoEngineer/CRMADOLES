@@ -16,6 +16,8 @@ with st.form("Cadastro Adoles",clear_on_submit=True):
     nome = st.text_input("Nome")
     telefone = st.text_input("Telefone contato")
     rede_social = st.text_input("Rede Social")
+    genero = st.selectbox("Genero",["M","F"])
+    batizado = st.selectbox("Batizado(a)?",["S","N"])
     data_nasc = st.date_input("Data de nascimento",format="DD/MM/YYYY")
 
     # Every form must have a submit button.
@@ -35,6 +37,8 @@ with st.form("Cadastro Adoles",clear_on_submit=True):
             "Nome": nome,
             "Telefone":telefone,
             "Rede Social": rede_social,
+            "Genero": genero,
+            "Batizado":batizado,
             "Data Nascimento": str(data_nasc)
         }
         
