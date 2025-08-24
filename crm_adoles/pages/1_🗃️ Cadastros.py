@@ -12,8 +12,12 @@ baldinho = s3.Bucket('crmadole')
 st.header("Lista de pessoas cadastradas")
 
 cadastrados = []
-for balde in baldinho.objects.all():
-    cadastrados.append(balde.key.split(".")[0].replace("_"," "))
-
+for obj in baldinho.objects.filter(Prefix="perfis/"):
+    if obj.key.endswith("/"):
+        continue
+    nome = obj.key.split("/")[-1]  # pega só o nome do arquivo
+    nome = nome.split(".")[0].replace("_", " ")  # remove extensão e ajusta underscores
+    cadastrados.append(nome)
+    
 #size_rows = len(cadastrados)/2
 st.table(cadastrados)
